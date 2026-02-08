@@ -1,0 +1,11 @@
+steps:
+  - name: 步骤1_信息搜索
+    skill: web_search
+    params:
+      query: "{{input.query}}"
+      mode: intelligent
+  - name: 步骤2_结果汇总
+    action: llm_summarize
+    prompt: |
+      请根据以下数据生成分析报告：
+      {{steps.步骤1_信息搜索.results}}
